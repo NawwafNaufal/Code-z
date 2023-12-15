@@ -40,7 +40,13 @@ class Auth extends CI_Controller
                         'role_id' => $user['role_id']
                     ];
                     $this->session->set_userdata($data);
-                    redirect('user');
+                    if ($user['role_id'] == 1) {
+                        redirect('admin');
+                    } else if ($user['role_id'] == 2) {
+                        redirect('member');
+                    } else {
+                        redirect('user');
+                    }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger text-center" role="alert">
                 Wrong password</div>');
@@ -82,7 +88,7 @@ class Auth extends CI_Controller
                 'email' =>  htmlspecialchars($this->input->post('email', TRUE)),
                 'image' => 'default.jpg',
                 'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
-                'role_id' => 2,
+                'role_id' => 3,
                 'is_active' => 1,
                 'date_created' => time()
 
