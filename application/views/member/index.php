@@ -2,7 +2,7 @@
         <div class="container-fluid">
 
             <!-- Page Heading -->
-            <h1 class="h3 mb-4 text-gray-800">Members</h1>
+            <h1 class="h3 mb-4 text-gray-800">Membership</h1>
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row g-0">
                     <div class="col-md-4">
