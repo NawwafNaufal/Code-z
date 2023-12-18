@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 15, 2023 at 10:11 AM
+-- Generation Time: Dec 16, 2023 at 05:28 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -70,7 +70,9 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (2, 1, 2),
 (3, 2, 2),
 (4, 2, 3),
-(5, 3, 3);
+(5, 3, 3),
+(6, 1, 3),
+(7, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -90,7 +92,9 @@ CREATE TABLE `user_menu` (
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (1, 'Admin'),
 (2, 'Member'),
-(3, 'User');
+(3, 'User'),
+(4, 'Menu'),
+(5, 'Test');
 
 -- --------------------------------------------------------
 
@@ -134,7 +138,10 @@ CREATE TABLE `user_sub_menu` (
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
 (7, 1, 'Dasboard', 'admin', 'fas fa-fw fa-tachometer-alt', 1),
 (8, 2, 'Membership', 'member', 'fas fa-fw fa-solid fa-star', 1),
-(9, 3, 'My Profile', 'user', 'fas fa-fw fa-chart-area', 1);
+(9, 3, 'My Profile', 'user', 'fas fa-fw fa-chart-area', 1),
+(10, 4, 'Menu Management', 'menu', 'fas fa-fw fa-folder', 1),
+(11, 4, 'Sub Menu Management', 'menu/submenu', 'fas fa-fw fa-folder-open', 1),
+(12, 1, 'Try', 'test/test', 'fas fa-fw fa-youtube', 1);
 
 --
 -- Indexes for dumped tables
@@ -184,13 +191,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user_role`
@@ -202,7 +209,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
