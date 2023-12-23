@@ -1,3 +1,24 @@
+<?php
+//start session
+
+require_once 'config.php';
+
+if (isset($_GET['code'])) {
+    $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+    $client->setAccessToken($token);
+
+    $gauth = new Google\Service\Oauth2($client);
+    $google_info = $gauth->userinfo->get();
+
+    $_SESSION['info'] = [
+        'name' => $google_info->name,
+        'email' => $google_info->email,
+        'picture' => $google_info->picture
+    ];
+    header('Location: /google-login');
+}
+?>
+
 <style>
     .custom-text-color {
         color: #2ABCDC;
@@ -23,7 +44,6 @@
     }
 </style>
 <div class="container">
-
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
@@ -59,8 +79,8 @@
                                         Login
                                     </button>
                                     <hr>
-                                    <a href="index.html" class="btn btn-google btn-user btn-block custom-login-button rounded-0">
-                                        <i class="fab fa-google fa-fw"></i> Login with Google
+                                    <a href="<?= $client->createAuthUrl() ?>" class="btn btn-google btn-user btn-block custom-login-button rounded-0">
+                                        <i class="fab fa-google fa-fw"></i> Login dengan Google
                                     </a>
                                 </form>
                                 <hr>
